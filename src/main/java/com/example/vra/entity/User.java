@@ -3,12 +3,14 @@ package com.example.vra.entity;
 import com.example.vra.enums.UserRole;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 @Entity
 public class User {
  @Id
- 
+ @GeneratedValue(strategy = GenerationType.IDENTITY)
  private int userid;
  private String username;
  private String email;
