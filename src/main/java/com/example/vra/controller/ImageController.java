@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.example.vra.entity.Image;
-import com.example.vra.response.SimpleResponseStructure;
+import com.example.vra.responsestructure.SimpleResponseStructure;
 import com.example.vra.service.ImageService;
 
 @RestController
