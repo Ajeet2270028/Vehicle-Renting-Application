@@ -7,8 +7,9 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.example.vra.entity.Image;
 import com.example.vra.entity.User;
+import com.example.vra.exception.ImageNotfindByIdException;
 import com.example.vra.exception.UserNotFoundImageException;
-import com.example.vra.exception.failedToUploadeException;
+import com.example.vra.exception.FailedToUploadeImageException;
 import com.example.vra.repository.ImageRepository;
 import com.example.vra.repository.UserRepository;
 @Controller
@@ -33,7 +34,7 @@ public class ImageService {
 			user.setProfilePicture(image);
 			userRepository.save(user);
 		}else {
-			throw new UserNotFoundImageException("User Not found");
+			throw new UserNotFoundImageException("User Not found by userId");
 		}
 		
 	}
@@ -48,12 +49,12 @@ public class ImageService {
 //			imageRepository.save(image);
 			return image;
 		}catch(Exception e) {
-			throw new failedToUploadeException("Faild to upload Exception");
+			throw new FailedToUploadeImageException("Failed to upload user poofile");
 		}
 		
 	}
 
 	public Image getImage(int imageid) {
-		return imageRepository.findById(imageid).orElseThrow();
+		return imageRepository.findById(imageid).orElseThrow(()-> new ImageNotfindByIdException("failed image find by id"));
 	}
 }

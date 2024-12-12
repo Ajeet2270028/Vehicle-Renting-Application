@@ -1,4 +1,4 @@
-package com.example.vra.response;
+package com.example.vra.responsestructure;
 
 public class ResponseStructure<T> {
    private int status;
