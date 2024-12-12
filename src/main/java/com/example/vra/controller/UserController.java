@@ -5,12 +5,18 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.example.vra.entity.User;
 import com.example.vra.response.ResponseStructure;
 import com.example.vra.service.UserService;
 
-@Controller
+//@Controller
+@RestController
+@RequestMapping("/api")
 public class UserController {
   private final UserService userService;
 
@@ -23,4 +29,6 @@ public ResponseEntity<ResponseStructure<User>> saveUser(@RequestBody User user){
 	user=userService.saveUser(user);
 	return ResponseEntity.status(HttpStatus.CREATED).body(ResponseStructure.create(HttpStatus.CREATED.value(), "User Created", user));
 }
+
+
 }

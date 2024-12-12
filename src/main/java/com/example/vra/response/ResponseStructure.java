@@ -31,4 +31,12 @@ public void setData(T data) {
 	   
 	   return response;
    }
+   public static <T>ResponseStructure<T> create(int status,String message){
+	   ResponseStructure<T> response=new ResponseStructure<T>();
+	   response.setStatus(status);
+	   response.setMessage(message);
+//	   response.setData(data);
+	   
+	   return response;
+   }
 }
