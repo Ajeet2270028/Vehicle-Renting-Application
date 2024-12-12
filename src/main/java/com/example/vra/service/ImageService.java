@@ -52,4 +52,8 @@ public class ImageService {
 		}
 		
 	}
+
+	public Image getImage(int imageid) {
+		return imageRepository.findById(imageid).orElseThrow();
+	}
 }

@@ -14,9 +14,7 @@ import com.example.vra.entity.User;
 import com.example.vra.response.ResponseStructure;
 import com.example.vra.service.UserService;
 
-//@Controller
 @RestController
-@RequestMapping("/api")
 public class UserController {
   private final UserService userService;
 
@@ -24,6 +22,7 @@ public UserController(UserService userService) {
 	super();
 	this.userService = userService;
 }
+
 @PostMapping("/save-user")
 public ResponseEntity<ResponseStructure<User>> saveUser(@RequestBody User user){
 	user=userService.saveUser(user);
