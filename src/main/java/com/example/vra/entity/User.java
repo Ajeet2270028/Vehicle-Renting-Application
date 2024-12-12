@@ -6,6 +6,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
 
 @Entity
 public class User {
@@ -17,7 +18,9 @@ public class User {
  private String phoneNumber;
  private String password;
  private UserRole role;
- private String profilePicture;
+ 
+ @OneToOne
+ private Image profilePicture;
 public int getUserid() {
 	return userid;
 }
@@ -54,10 +57,10 @@ public UserRole getRole() {
 public void setRole(UserRole role) {
 	this.role = role;
 }
-public String getProfilePicture() {
+public Image getProfilePicture() {
 	return profilePicture;
 }
-public void setProfilePicture(String profilePicture) {
+public void setProfilePicture(Image profilePicture) {
 	this.profilePicture = profilePicture;
 }
  
