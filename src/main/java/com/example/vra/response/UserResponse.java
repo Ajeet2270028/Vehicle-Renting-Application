@@ -1,5 +1,6 @@
 package com.example.vra.response;
 
+import com.example.vra.entity.Image;
 import com.example.vra.enums.UserRole;
 
 public class UserResponse {
@@ -11,7 +12,13 @@ public class UserResponse {
 	 private UserRole role;
 	 
 //	 @OneToOne
-//	 private Image profilePicture;
+	private String  profilePicture;
+	public String getProfilePicture() {
+		return profilePicture;
+	}
+	public void setProfilePicture(String profilePicture) {
+		this.profilePicture = profilePicture;
+	}
 	public int getUserid() {
 		return userid;
 	}

@@ -1,5 +1,7 @@
 package com.example.vra.controller;
 
+import java.net.http.HttpHeaders;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -10,8 +12,10 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.example.vra.entity.Image;
+import com.example.vra.entity.User;
 import com.example.vra.responsestructure.SimpleResponseStructure;
 import com.example.vra.service.ImageService;
+import com.example.vra.service.UserService;
 
 @RestController
 public class ImageController {
@@ -34,4 +38,7 @@ public ResponseEntity<byte[]> getImagefetch(@RequestParam int imageid){
 	return ResponseEntity.status(HttpStatus.OK)
 			.contentType(MediaType.valueOf(image.getContentType())).body(image.getImageBytes());
 }
+ 
+
+
 }

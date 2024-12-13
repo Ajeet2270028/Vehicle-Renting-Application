@@ -29,7 +29,7 @@ public class UserMapper {
 		  response.setEmail(user.getEmail());
 		  response.setPhoneNumber(user.getPhoneNumber());
 		  response.setRole(user.getRole());
-		  
+//		  response.setProfilePicture("get-userProfile-picture?userid"+user.getProfilePicture().getImageid());
 		  return response;
 	}
 }
