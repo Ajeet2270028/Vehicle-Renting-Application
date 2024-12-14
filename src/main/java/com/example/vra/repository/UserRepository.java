@@ -10,4 +10,6 @@ public interface UserRepository extends JpaRepository<User, Integer>{
   
 	@Query("Select u.profilePicture.imageid from User u where u.userid= :userid")
 	Integer getProfilePictureByuserid(int userid);
+	
+	
 }

@@ -1,13 +1,12 @@
 package com.example.vra.controller;
 
-import java.net.http.HttpHeaders;
 
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -16,6 +15,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.example.vra.entity.Image;
 import com.example.vra.entity.User;
+import com.example.vra.enums.UserRole;
 import com.example.vra.request.UserRequest;
 import com.example.vra.response.UserResponse;
 import com.example.vra.responsestructure.ResponseStructure;
@@ -46,6 +46,26 @@ public ResponseEntity<ResponseStructure<UserResponse>> findUser(@RequestParam in
 	 UserResponse userResponse=userService.findUser(userid);
 	return ResponseEntity.status(HttpStatus.CREATED).body(ResponseStructure.create(HttpStatus.CREATED.value(), "Image find by user", userResponse));
 }
+ 
+@PostMapping("/Customer/register")
+public ResponseEntity<ResponseStructure<UserResponse>> registerCustomer(@RequestBody UserRequest userRequest){
+	
+	return ResponseEntity.status(HttpStatus.CREATED).body(ResponseStructure.create(HttpStatus.CREATED.value(), "User find by role", userService.registerCustomer(userRequest,UserRole.CUSTOMER)));
+}
+
+@PostMapping("/RentingPartner/register")
+public ResponseEntity<ResponseStructure<UserResponse>> registerRentingpartner(@RequestBody UserRequest userRequest){
+	UserResponse response=userService.registerRentingPartner(userRequest,UserRole.RENTING_PARTNER);
+	return ResponseEntity.status(HttpStatus.CREATED).body(ResponseStructure.create(HttpStatus.CREATED.value(), "User find by role", response));
+}
+
+@PostMapping("/update-user")
+public ResponseEntity<ResponseStructure<UserResponse>> updateUser(@RequestBody UserRequest userRequest,@RequestParam int userid){
+	
+	UserResponse response=userService.updateUserById(userRequest,userid);
+	return ResponseEntity.status(HttpStatus.CREATED).body(ResponseStructure.create(HttpStatus.CREATED.value(), "User find by role", response));
+}
+
 
 
 }

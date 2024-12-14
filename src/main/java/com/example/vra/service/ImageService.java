@@ -27,10 +27,14 @@ public class ImageService {
 		Optional<User> optional=userRepository.findById(userid);
 		if(optional.isPresent()) {
 //			Image image=getImage(file);
+//			User user=optional.get();
+			User user=optional.get();
+			if(user.getProfilePicture()==null) {
+				imageRepository.delete(user.getProfilePicture());
+			}
 			Image image=imageRepository.save(this.getImage(file));
 			image =imageRepository.save(image);
 			
-			User user=optional.get();
 			user.setProfilePicture(image);
 			userRepository.save(user);
 		}else {
